@@ -19,7 +19,7 @@ public class Core {
 	private Map<String,String> correctedChar = new HashMap<>();
 	
 	public static void main(String[] args) {
-		Core c = new Core("D:\\new 5.txt","D:\\Dictionnary.txt");
+		Core c = new Core("./WrongEncodedFrenchDictionnary.txt","./CorrectedFrenchDictionnary.txt");
 	}
 	
 	public Core(String pathSrc, String pathDest) {
@@ -41,23 +41,22 @@ public class Core {
 	}
 	
 	public void startCorrection() {
+		System.out.println("Starting...");
 		fillInputLines();
 		correctAllWords();
 		fillOutputFile();
+		System.out.println("Done !");
 	}
 	
 	public void fillInputLines() {
 		List<String> list = new ArrayList<>();
 		File fichier = new File(pathInputFile);
 		BufferedReader br = null;
-		int i = 1;
 		try {
 			br = new BufferedReader(new FileReader(fichier));
 			String line;
 			while ((line = br.readLine()) != null) {
 				list.add(line);
-				System.out.println(i+ ";" + line);
-				i++;
 			}
 			br.close();
 		} catch (Exception e) {
